@@ -99,4 +99,17 @@ public class UserEntity {
     public void setAccountlistsById(Collection<AccountlistEntity> accountlistsById) {
         this.accountlistsById = accountlistsById;
     }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", login='" + login + '\'' +
+                ", pasword='" + pasword + '\'' +
+                ", acountListId=" + acountListId +
+                ", accountlistsById=" + accountlistsById +
+                '}';
+    }
 }
