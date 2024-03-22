@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Konfiguracja połączenia z bazą danych -->
+        <property name="connection.driver_class">org.mariadb.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mariadb://localhost:3306/bank_gui</property>
+        <property name="connection.username">bank_admin</property>
+        <property name="connection.password">zaq1@WSX</property>
+
+        <!-- Dialect dla MySQL -->
+        <property name="dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <!-- Echo all executed SQL to console -->
+        <property name="hibernate.show_sql"> true </property>
+        <property name="hibernate.format_sql"> true </property>
+        <property name="hibernate.highlight_sql"> true </property>
+
+        <!-- Mappowanie klas encji -->
+        <mapping class="org.example.entity.AccountEntity"/>
+        <mapping class="org.example.entity.AccountlistEntity"/>
+        <mapping class="org.example.entity.TransactionEntity"/>
+        <mapping class="org.example.entity.TransactionlistEntity"/>
+        <mapping class="org.example.entity.UserEntity"/>
+    </session-factory>
+</hibernate-configuration>
