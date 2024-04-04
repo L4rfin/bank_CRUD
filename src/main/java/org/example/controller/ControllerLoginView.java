@@ -55,7 +55,7 @@ public class ControllerLoginView {
                 System.out.println("login as email");
                 updateLoginInputAsEmail(loginField.getText());
             }
-            if(!emailValidator(loginField.getText())) {
+            if (!emailValidator(loginField.getText())) {
                 System.out.println("login as username");
                 updateLoginInputAsUsername(loginField.getText());
             }
@@ -81,8 +81,8 @@ public class ControllerLoginView {
     }
 
     public void updateLoginInputAsEmail(String email) {
-            setEmail(email);
-            setLogin(null);
+        setEmail(email);
+        setLogin(null);
         loginLabel.setText("User name or email");
         loginLabel.setStyle("-fx-text-fill: green");
         loginLabel.setStyle("-fx-font-weight: bold");
@@ -102,7 +102,7 @@ public class ControllerLoginView {
         }
     }
 
-    public void loginUsingEmail(MouseEvent event)throws IOException {
+    public void loginUsingEmail(MouseEvent event) throws IOException {
         if (email != null && password != null) {
             LoginUser tryToLogin = new LoginUser();
             UserEntity user = tryToLogin.LookForUserAndLoginUsingEmail(email, password);
@@ -144,7 +144,7 @@ public class ControllerLoginView {
 
     public boolean emailValidator(String email) {
         System.out.println("email: " + email);
-        System.out.println( EmailValidator.getInstance().isValid(email));
+        System.out.println(EmailValidator.getInstance().isValid(email));
         return EmailValidator.getInstance().isValid(email);
     }
 
@@ -172,10 +172,9 @@ public class ControllerLoginView {
         if (login != null && password != null) {
             loginUsingUsername(event);
         }
-        if (email != null && password !=null){
+        if (email != null && password != null) {
             loginUsingEmail(event);
-        }
-        else {
+        } else {
             passwordLabel.setText("Password or user name is incorrect");
             passwordLabel.setStyle("-fx-text-fill: Red");
 
@@ -183,7 +182,7 @@ public class ControllerLoginView {
             loginLabel.setStyle("-fx-text-fill: Red");
         }
     }
-    
+
 
     public void MakeCABold() {
         createAccountLabel.setStyle(
@@ -220,25 +219,12 @@ public class ControllerLoginView {
         stage.show();
     }
 
-
-    public String getLogin() {
-        return login;
-    }
-
     public void setLogin(String login) {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setEmail(String email) {

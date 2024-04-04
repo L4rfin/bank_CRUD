@@ -7,10 +7,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import org.example.entity.AccountEntity;
 import org.example.entity.UserEntity;
-import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 
 
@@ -36,6 +37,7 @@ public class ControllerTransferView {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
     public void onStart() {
         accountName.setText(account.getAccountName());
         accountNumber.setText(String.valueOf(account.getAccountNumber()));
@@ -43,14 +45,15 @@ public class ControllerTransferView {
     }
 
     public void updateACNumber() {
-        if (onlyNumber(transactionNumberField.getText())){
+        if (onlyNumber(transactionNumberField.getText())) {
             setTransactionAccountNumber(transactionNumberField.getText());
-        }else {
+        } else {
             System.out.println("transfer number cane be only a number");
         }
 
     }
-    public void buttonReturnToHomepage(MouseEvent event)throws IOException {
+
+    public void buttonReturnToHomepage(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/homepage-view.fxml"));
         root = loader.load();
         ControllerHomepageView homepageViewController = loader.getController();
@@ -61,56 +64,53 @@ public class ControllerTransferView {
         stage.setScene(scene);
         stage.show();
     }
+
     public void updateACTransfer() {
-        if (onlyNumber(amountField.getText())){
+        if (onlyNumber(amountField.getText())) {
             setTransferSum(amountField.getText());
-        }else {
+        } else {
             System.out.println("transfer sum cane be only a number");
         }
     }
 
     public void updateTransferName() {
-        if (!transactionNameField.getText().matches(".*\\W.*")){
+        if (!transactionNameField.getText().matches(".*\\W.*")) {
             setTransferName(transactionNameField.getText());
-        }else {
+        } else {
             System.out.println("transfer name need to be fill and can't contain a special character");
         }
 
     }
 
-    public void tryToProcessTransaction(){
-        if (transactionDateValidator()){
+    public void tryToProcessTransaction() {
+        if (transactionDateValidator()) {
             System.out.println("transaction valid");
             //try to process transaction
-        }else {
+        } else {
             System.out.println("incorrect date of transaction");
         }
 
     }
 
-    public boolean transactionDateValidator(){
-        if (getTransferName().isEmpty()){
+    public boolean transactionDateValidator() {
+        if (getTransferName().isEmpty()) {
             System.out.println("TransferName empty");
             return false;
         }
-        if (Integer.parseInt(getTransferSum())<=0){
+        if (Integer.parseInt(getTransferSum()) <= 0) {
             System.out.println("Transfer sum can't be smaller or equal to 0");
             return false;
         }
-        if (account.getBalance() < Integer.parseInt(getTransferSum())){
+        if (account.getBalance() < Integer.parseInt(getTransferSum())) {
             System.out.println("account balance is smaller then transfer sum");
             return false;
         }
-        if (Integer.parseInt(getTransactionAccountNumber())<=0){
+        if (Integer.parseInt(getTransactionAccountNumber()) <= 0) {
             System.out.println("incorrect account number");
             return false;
         }
         return true;
     }
-
-
-
-
 
 
     public boolean onlyNumber(String value) {
