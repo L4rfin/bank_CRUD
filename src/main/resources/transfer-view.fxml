@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerTransferView">
+   <children>
+      <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="Transaction name" />
+            <Separator prefHeight="18.0" prefWidth="28.0" />
+            <TextField fx:id="transactionNameField" accessibleRole="TREE_VIEW" onKeyReleased="#updateTransferName" />
+            <VBox prefHeight="100.0" prefWidth="98.0">
+               <children>
+                  <Label text="account name" />
+                  <Label text="account number" />
+                  <Label text="account balance" />
+               </children>
+            </VBox>
+            <VBox layoutX="282.0" layoutY="10.0" prefHeight="100.0" prefWidth="195.0">
+               <children>
+                  <Label fx:id="accountName" text="value" />
+                  <Label fx:id="accountNumber" text="value" />
+                  <Label fx:id="accountBalance" text="value" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="account number:" />
+            <Separator prefHeight="18.0" prefWidth="28.0" />
+            <TextField fx:id="transactionNumberField" onKeyReleased="#updateACNumber" />
+         </children>
+      </HBox>
+      <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Label text="amount" />
+            <Separator prefHeight="18.0" prefWidth="28.0" />
+            <TextField fx:id="amountField" onKeyReleased="#updateACTransfer" />
+         </children>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" text="confirm" />
+            <Separator prefWidth="200.0" />
+            <Label text="provision" />
+         </children>
+      </HBox>
+      <Button mnemonicParsing="false" onMouseClicked="#buttonReturnToHomepage" text="return" />
+   </children>
+</VBox>

@@ -1,25 +1,23 @@
 package org.example;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.EntityTransaction;
-import jakarta.persistence.Persistence;
-import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
 import java.io.IOException;
-import java.util.function.Consumer;
+import java.util.Objects;
 
 
 public class Main extends Application {
-
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("/login-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        primaryStage.setTitle("Hello!");
+        Parent root = FXMLLoader.load(Objects.requireNonNull(Main.class.getResource("/login-view.fxml")));
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("bank");
+        primaryStage.setFullScreen(false);
+        primaryStage.setResizable(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }

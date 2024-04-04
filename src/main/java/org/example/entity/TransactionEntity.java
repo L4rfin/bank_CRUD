@@ -116,6 +116,19 @@ public class TransactionEntity {
         return Objects.hash(id, accountIds, outAccountId, inAccountId, outSum, inSum, provision, operationDate);
     }
 
+    @Override
+    public String toString() {
+        return "TransactionEntity{" +
+                "id=" + id +
+                ", accountIds=" + accountIds +
+                ", outAccountId=" + outAccountId +
+                ", inAccountId=" + inAccountId +
+                ", outSum=" + outSum +
+                ", inSum=" + inSum +
+                ", provision=" + provision +
+                '}';
+    }
+
     public Collection<TransactionlistEntity> getTransactionlistsById() {
         return transactionlistsById;
     }

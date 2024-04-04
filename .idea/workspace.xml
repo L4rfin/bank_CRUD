@@ -5,18 +5,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="45ff96ca-f831-45a7-b593-20507f2eba37" name="Changes" comment="działa">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ControllerLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/EntityManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/login-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ControllerCreateAccountView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ControllerHistoryView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ControllerHomepageView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ControllerLoginView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/controller/ControllerTransferView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/AccountHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/AccountListOfUserId.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/CreateUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/LoginUser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/service/Transfer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/create-account-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/history-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/homepage-view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/transfer-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/14a1cf20-7b60-4b50-8ae0-64c648a0e176.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/14a1cf20-7b60-4b50-8ae0-64c648a0e176.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/54df1288-2229-4357-8ff2-05c2c06e0bfc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/54df1288-2229-4357-8ff2-05c2c06e0bfc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/UserProperty.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/controller/ControllerLogin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entity/AccountlistEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/AccountlistEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entity/TransactionEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/TransactionEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entity/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entity/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/hibernate.cfg.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/service/EntityManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/service/EntityManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/login-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +40,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="FxmlFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -48,39 +62,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.main.executor": "Run",
-    "JPA.DatabaseSchemaImportDialog": "54df1288-2229-4357-8ff2-05c2c06e0bfc",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "test",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/adian/Desktop/addressbook-javafx-hibernate-mysql-master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.26187575",
-    "settings.editor.selected.configurable": "Settings.JavaScript",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.main.executor&quot;: &quot;Run&quot;,
+    &quot;JPA.DatabaseSchemaImportDialog&quot;: &quot;54df1288-2229-4357-8ff2-05c2c06e0bfc&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;test&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/adian/Desktop/addressbook-javafx-hibernate-mysql-master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.26187575&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;Settings.JavaScript&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mariadb"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mariadb&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\adian\Desktop\Bank_CRUD\src\main\resources\META-INF" />
       <recent name="C:\Users\adian\Desktop\Bank_CRUD\src\main\resources" />
+      <recent name="C:\Users\adian\Desktop\Bank_CRUD\src\main\resources\META-INF" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="org.example.entity" />
@@ -107,7 +121,18 @@
       <workItem from="1710950093718" duration="1855000" />
       <workItem from="1711026584755" duration="3892000" />
       <workItem from="1711103874365" duration="20181000" />
-      <workItem from="1711143192041" duration="1752000" />
+      <workItem from="1711143192041" duration="3095000" />
+      <workItem from="1711200399497" duration="25630000" />
+      <workItem from="1711457739126" duration="1269000" />
+      <workItem from="1711465325614" duration="24608000" />
+      <workItem from="1711634248496" duration="7260000" />
+      <workItem from="1711722217161" duration="4992000" />
+      <workItem from="1711738672238" duration="2890000" />
+      <workItem from="1711797844181" duration="7285000" />
+      <workItem from="1711886699287" duration="1277000" />
+      <workItem from="1711975565294" duration="7368000" />
+      <workItem from="1712071492483" duration="5464000" />
+      <workItem from="1712219312228" duration="5718000" />
     </task>
     <task id="LOCAL-00001" summary="działa">
       <option name="closed" value="true" />
@@ -117,7 +142,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711138151250</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="działa">
+      <option name="closed" value="true" />
+      <created>1711145328786</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1711145328787</updated>
+    </task>
+    <task id="LOCAL-00003" summary="działa">
+      <option name="closed" value="true" />
+      <created>1711145442824</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1711145442824</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

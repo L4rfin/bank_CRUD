@@ -10,7 +10,6 @@ public class AccountlistEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     int id;
-
     @ManyToOne
     @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
     private UserEntity userByUserId;

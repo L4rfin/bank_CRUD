@@ -21,6 +21,9 @@ public class UserEntity {
     @Column(name = "login")
     private String login;
     @Basic
+    @Column(name = "email")
+    private String email;
+    @Basic
     @Column(name = "pasword")
     private String pasword;
     @Basic
@@ -109,7 +112,15 @@ public class UserEntity {
                 ", login='" + login + '\'' +
                 ", pasword='" + pasword + '\'' +
                 ", acountListId=" + acountListId +
-                ", accountlistsById=" + accountlistsById +
+                ", email='"+email+'\''+
                 '}';
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
     }
 }
