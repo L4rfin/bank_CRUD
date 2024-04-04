@@ -7,18 +7,18 @@ import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.entity.AccountEntity;
 import org.example.entity.UserEntity;
 import org.example.service.AccountListOfUserId;
-import javafx.scene.control.*;
-
 
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 
 public class ControllerHomepageView {
@@ -38,7 +38,8 @@ public class ControllerHomepageView {
     private Parent root;
 
     private ArrayList<AccountEntity> accountList;
-    public void onStart(){
+
+    public void onStart() {
         AccountListOfUserId accountListOfUserId = new AccountListOfUserId();
         setAccountList(accountListOfUserId.GetListOfAccount(userLoaded.getId()));
         accountList.forEach(accountEntity -> System.out.println(accountEntity.getId()));
@@ -94,11 +95,11 @@ public class ControllerHomepageView {
         accountNumber.setStyle("-fx-text-fill: gray;" +
                 "-fx-font-size: 8;");
         Label accountBalance = new Label(String.valueOf(entity.getBalance()));
-        if (entity.getBalance()>0){
+        if (entity.getBalance() > 0) {
             accountBalance.setStyle("-fx-text-fill: green;" +
                     "-fx-font-weight: bold;" +
                     "-fx-font-size: 20;");
-        }else {
+        } else {
             accountBalance.setStyle("-fx-text-fill: red;" +
                     "-fx-font-weight: bold;" +
                     "-fx-font-size: 20");
@@ -106,7 +107,7 @@ public class ControllerHomepageView {
         Button accountHistory = new Button("History");
         accountHistory.setOnMouseClicked((event -> {
             try {
-                buttonHistoryPres(event ,entity);
+                buttonHistoryPres(event, entity);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -115,7 +116,7 @@ public class ControllerHomepageView {
         Button makeTransfer = new Button("Transfer");
         makeTransfer.setOnMouseClicked((event -> {
             try {
-                buttonTransferPres(event ,entity);
+                buttonTransferPres(event, entity);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -140,7 +141,7 @@ public class ControllerHomepageView {
         panel1.getChildren().add(mainBoxCard);
         accountListPanel.getChildren().add(cardSeparator);
         accountListPanel.getChildren().add(panel1);
-        accountListPanel.setPrefWidth(392+accountListPanel.getWidth()+500);
+        accountListPanel.setPrefWidth(392 + accountListPanel.getWidth() + 500);
 
     }
 
@@ -165,7 +166,8 @@ public class ControllerHomepageView {
         stage.show();
 
     }
-    public void buttonTransferPres(MouseEvent event,AccountEntity entity) throws IOException {
+
+    public void buttonTransferPres(MouseEvent event, AccountEntity entity) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/transfer-view.fxml"));
         root = loader.load();
         ControllerTransferView controller = loader.getController();
@@ -178,6 +180,7 @@ public class ControllerHomepageView {
         stage.show();
 
     }
+
     public void buttonLogout(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/login-view.fxml"));
         root = loader.load();

@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -16,7 +17,7 @@ import org.example.entity.AccountEntity;
 import org.example.entity.TransactionEntity;
 import org.example.entity.UserEntity;
 import org.example.service.AccountHistory;
-import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -76,9 +77,10 @@ public class ControllerHistoryView {
         firstRow.getChildren().add(accountIds);
         secondRow.getChildren().add(outAccountId);
         secondRow.getChildren().add(inAccountId);
-        if (transaction.getInSum()>0){
+        if (transaction.getInSum() > 0) {
             thirdRow.getChildren().add(inSum);
-        }if (transaction.getOutSum()>0){
+        }
+        if (transaction.getOutSum() > 0) {
             thirdRow.getChildren().add(outSum);
         }
         fourthRow.getChildren().add(provision);
@@ -96,9 +98,10 @@ public class ControllerHistoryView {
         mainColumn.getChildren().add(fifthRow);
         panel1.getChildren().add(mainColumn);
         historyPanelList.getChildren().add(panel1);
-        historyPanelList.setPrefHeight(392+historyPanelList.getHeight()+500);
+        historyPanelList.setPrefHeight(392 + historyPanelList.getHeight() + 500);
     }
-    public void buttonReturnToHomepage(MouseEvent event)throws IOException{
+
+    public void buttonReturnToHomepage(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/homepage-view.fxml"));
         root = loader.load();
         ControllerHomepageView homepageViewController = loader.getController();
