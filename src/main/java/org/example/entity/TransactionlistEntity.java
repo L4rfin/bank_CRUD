@@ -1,60 +1,57 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+
 import java.util.Objects;
 
 @Entity
-@Table(name = "transactionlist")
+@Table(name = "transactionlist", schema = "bank", catalog = "")
 public class TransactionlistEntity {
-
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "id")
-    int id;
+    private int id;
+    @ManyToOne
+    @JoinColumn(name = "accountId", referencedColumnName = "id", nullable = false)
+    private AccountEntity accountByAccountId;
+    @ManyToOne
+    @JoinColumn(name = "transactionId", referencedColumnName = "id", nullable = false)
+    private TransactionsEntity transactionsByTransactionId;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         TransactionlistEntity that = (TransactionlistEntity) o;
-        return id == that.id && Objects.equals(accountByAccountNumber, that.accountByAccountNumber) && Objects.equals(transactionByTransactionId, that.transactionByTransactionId);
+        return id == that.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, accountByAccountNumber, transactionByTransactionId);
+        return Objects.hash(id);
     }
 
-    @ManyToOne
-    @JoinColumn(name = "accountNumber", referencedColumnName = "id", nullable = false)
-    private AccountEntity accountByAccountNumber;
-    @ManyToOne
-    @JoinColumn(name = "transactionId", referencedColumnName = "id", nullable = false)
-    private TransactionEntity transactionByTransactionId;
-
-    public TransactionlistEntity() {
-        System.out.println("build TransactionlistEntity");
+    public AccountEntity getAccountByAccountId() {
+        return accountByAccountId;
     }
 
-
-
-    public int getId() {
-        return id;
-    }
-    public AccountEntity getAccountByAccountNumber() {
-        return accountByAccountNumber;
+    public void setAccountByAccountId(AccountEntity accountByAccountId) {
+        this.accountByAccountId = accountByAccountId;
     }
 
-    public void setAccountByAccountNumber(AccountEntity accountByAccountNumber) {
-        this.accountByAccountNumber = accountByAccountNumber;
+    public TransactionsEntity getTransactionsByTransactionId() {
+        return transactionsByTransactionId;
     }
 
-    public TransactionEntity getTransactionByTransactionId() {
-        return transactionByTransactionId;
-    }
-
-    public void setTransactionByTransactionId(TransactionEntity transactionByTransactionId) {
-        this.transactionByTransactionId = transactionByTransactionId;
+    public void setTransactionsByTransactionId(TransactionsEntity transactionsByTransactionId) {
+        this.transactionsByTransactionId = transactionsByTransactionId;
     }
 }

@@ -1,7 +1,9 @@
 package org.example.service;
 
 import jakarta.persistence.Query;
-import org.example.entity.TransactionEntity;
+import org.example.entity.TransactionsEntity;
+import org.example.service.manager.EntityManager;
+
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -10,18 +12,22 @@ public class AccountHistory {
         EntityManager.setUp();
     }
 
-    public ArrayList<TransactionEntity> getAccountHistory(int accountIds) {
-        AtomicReference<ArrayList<TransactionEntity>> list = new AtomicReference<>();
+    public ArrayList<TransactionsEntity> getAccountHistory(int accountId) {
+        AtomicReference<ArrayList<TransactionsEntity>> list = new AtomicReference<>();
         try {
             EntityManager.inTransaction(entityManager -> {
-                Query query = entityManager.createQuery("SELECT transaction FROM TransactionEntity transaction WHERE transaction.accountIds = :accountIds");
-                query.setParameter("accountIds", accountIds);
-                list.set((ArrayList<TransactionEntity>) query.getResultList());
+                String hql = "SELECT a FROM TransactionsEntity a " +
+                        "JOIN TransactionlistEntity al ON a.id = al.transactionsByTransactionId.id " +
+                        "WHERE al.accountByAccountId.id =: accountId";
+                Query query = entityManager.createQuery(hql);
+                query.setParameter("accountId", accountId);
+                list.set((ArrayList<TransactionsEntity>) query.getResultList());
             });
         } catch (Exception e) {
             System.out.println("exception");
             list.set(null);
         }
+
         return list.get();
     }
 }

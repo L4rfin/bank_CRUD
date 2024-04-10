@@ -8,14 +8,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.entity.AccountEntity;
-import org.example.entity.UserEntity;
+import org.example.entity.UsersEntity;
+import org.example.service.Transfer;
 
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class ControllerTransferView {
+    public VBox MainPanel;
     @FXML
     TextField amountField;
     @FXML
@@ -29,10 +33,12 @@ public class ControllerTransferView {
     @FXML
     Label accountBalance;
     private String transactionAccountNumber;
-    private String TransferName;
-    private String TransferSum;
+    private String transferName;
+    private String transferSum;
+
+    private double provision = 0;
     private AccountEntity account;
-    private UserEntity user;
+    private UsersEntity user;
 
     private Stage stage;
     private Scene scene;
@@ -86,6 +92,8 @@ public class ControllerTransferView {
         if (transactionDateValidator()) {
             System.out.println("transaction valid");
             //try to process transaction
+            Transfer transfer = new Transfer();
+            transfer.proceedTransaction(transferName, Double.parseDouble(transferSum),provision,transactionAccountNumber,account);
         } else {
             System.out.println("incorrect date of transaction");
         }
@@ -130,22 +138,22 @@ public class ControllerTransferView {
     }
 
     public String getTransferName() {
-        return TransferName;
+        return transferName;
     }
 
     public void setTransferName(String transferName) {
-        TransferName = transferName;
+        this.transferName = transferName;
     }
 
     public String getTransferSum() {
-        return TransferSum;
+        return transferSum;
     }
 
     public void setTransferSum(String transferSum) {
-        TransferSum = transferSum;
+        this.transferSum = transferSum;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(UsersEntity user) {
         this.user = user;
     }
 }

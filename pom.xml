@@ -19,7 +19,11 @@
             <artifactId>commons-validator</artifactId>
             <version>1.8.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>commons-net</groupId>
+            <artifactId>commons-net</artifactId>
+            <version>3.10.0</version>
+        </dependency>
 
         <!-- START of JavaFX dependence -->
         <dependency>

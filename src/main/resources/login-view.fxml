@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerLoginView">
+<HBox fx:id="MainPanel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="445.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerLoginView">
    <children>
       <VBox prefHeight="200.0" prefWidth="100.0" />
 <VBox alignment="CENTER" prefHeight="400.0" prefWidth="280.0">
@@ -16,10 +16,16 @@
          </font>
       </Label>
       <Separator prefHeight="35.0" prefWidth="600.0" />
-      <Label fx:id="loginLabel" text="User name or email" />
+         <HBox alignment="CENTER" prefHeight="30.0" prefWidth="155.0">
+            <children>
+            <Label fx:id="loginLabel" text="User name or email" />
+            </children>
+         </HBox>
+         <Separator prefHeight="8.0" prefWidth="246.0" />
       <TextField fx:id="loginField" onKeyReleased="#getUserInputLogin" prefHeight="26.0" prefWidth="580.0" text="Testable" />
       <Separator prefHeight="35.0" prefWidth="600.0" />
       <Label fx:id="passwordLabel" text="Password" />
+         <Separator layoutX="10.0" layoutY="191.0" prefHeight="8.0" prefWidth="246.0" />
       <PasswordField fx:id="passwordField" onKeyReleased="#getUserInputPassword" text="zaq1@WSXCDE#" />
       <Separator prefHeight="35.0" prefWidth="600.0" />
       <Button fx:id="buttonLog_in" mnemonicParsing="false" onMouseClicked="#ButtonTryToLogin" text="log in" />

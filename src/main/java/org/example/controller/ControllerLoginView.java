@@ -5,14 +5,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.apache.commons.validator.routines.EmailValidator;
-import org.example.entity.UserEntity;
+import org.example.entity.UsersEntity;
 import org.example.service.LoginUser;
-
+import org.example.Result;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -105,10 +109,9 @@ public class ControllerLoginView {
     public void loginUsingEmail(MouseEvent event) throws IOException {
         if (email != null && password != null) {
             LoginUser tryToLogin = new LoginUser();
-            UserEntity user = tryToLogin.LookForUserAndLoginUsingEmail(email, password);
-            System.out.printf(user.toString());
+            UsersEntity user = tryToLogin.LookForUserAndLoginUsingEmail(email, password);
+
             if ((user.getId() > 0)) {
-                System.out.printf(user.toString());
                 GoToHomepage(event, user);
 
             } else {
@@ -124,11 +127,12 @@ public class ControllerLoginView {
     public void loginUsingUsername(MouseEvent event) throws IOException {
 
         LoginUser tryToLogin = new LoginUser();
-        UserEntity user = tryToLogin.LookForUserAndLoginUsingUsername(login, password);
-        System.out.printf(user.toString());
-        if ((user.getId() > 0)) {
-            System.out.printf(user.toString());
-            GoToHomepage(event, user);
+        Result<UsersEntity> user = tryToLogin.LookForUserAndLoginUsingUsername(login, password);
+        if (user.isSuccess())
+        {
+                GoToHomepage(event, user.getValue());
+        }else {
+            System.out.println(user.getError());
         }
 
     }
@@ -198,7 +202,7 @@ public class ControllerLoginView {
 
     @FXML
     public void GoToCreateAccount(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/create-account-view.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/create-user-view.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -206,7 +210,7 @@ public class ControllerLoginView {
     }
 
     @FXML
-    public void GoToHomepage(MouseEvent event, UserEntity user) throws IOException {
+    public void GoToHomepage(MouseEvent event, UsersEntity user) throws IOException {
         System.out.println("try to go homepage");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/homepage-view.fxml"));
         root = loader.load();

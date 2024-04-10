@@ -5,33 +5,44 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerCreateAccountView">
+<HBox fx:id="MainPanel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="426.0" prefWidth="445.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerCreateUserView">
    <children>
-      <VBox prefHeight="400.0" prefWidth="31.0">
+      <VBox alignment="BOTTOM_LEFT" prefHeight="380.0" prefWidth="61.0">
          <children>
             <Separator prefHeight="11.0" prefWidth="31.0" />
-            <Button fx:id="goBackButton" mnemonicParsing="false" onAction="#GoToLoginView" text="&lt;-" />
+            <Button fx:id="goBackButton" mnemonicParsing="false" onMouseClicked="#GoToLoginView" text="Back" />
          </children></VBox>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="280.0">
          <children>
             <ImageView fitHeight="53.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" />
             <Label fx:id="nameLabel" alignment="BOTTOM_LEFT" prefHeight="18.0" prefWidth="300.0" text="Name" wrapText="true" />
+            <Separator prefWidth="200.0" />
             <TextField fx:id="nameField" onKeyReleased="#UpdateNameString" text="Test" />
+            <Separator prefWidth="200.0" />
             <Label fx:id="surnameLabel" minWidth="300.0" text="Surname" />
+            <Separator prefWidth="200.0" />
             <TextField fx:id="surnameField" onKeyReleased="#UpdateSurnameString" text="Test" />
+            <Separator prefWidth="200.0" />
             <Label fx:id="emailLabel" onKeyReleased="#UpdateEmailString" prefHeight="18.0" prefWidth="339.0" text="Email" />
+            <Separator prefWidth="200.0" />
             <TextField fx:id="emailField" onKeyReleased="#UpdateEmailString" text="TestEmail@gamil.com" />
+            <Separator prefWidth="200.0" />
             <Label fx:id="userNameLabel" layoutX="119.0" layoutY="254.0" minWidth="300.0" text="User name" />
+            <Separator prefWidth="200.0" />
             <TextField fx:id="userNameField" layoutX="10.0" layoutY="272.0" onKeyReleased="#UpdateLoginString" text="Testable" />
+            <Separator prefWidth="200.0" />
             <Label fx:id="passwordLabel" layoutX="119.0" layoutY="276.0" minWidth="300.0" text="Password" />
+            <Separator prefWidth="200.0" />
             <PasswordField fx:id="passwordField" onKeyReleased="#UpdatePasswordString" text="zaq1@WSXCDE#" />
+            <Separator prefWidth="200.0" />
             <Label fx:id="rePasswordLabel" layoutX="108.0" layoutY="297.0" minWidth="300.0" text="Repeat password" />
+            <Separator prefWidth="200.0" />
             <PasswordField fx:id="repeatPasswordField" layoutX="10.0" layoutY="315.0" onKeyReleased="#UpdateRePasswordString" text="zaq1@WSXCDE#" />
             <Separator prefHeight="11.0" prefWidth="200.0" />
-            <Button fx:id="createButton" mnemonicParsing="false" onAction="#CreateUserFromDate" text="Create" />
+            <Button fx:id="createButton" mnemonicParsing="false" onMouseClicked="#CreateUserFromDate" text="Create" />
          </children>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="400.0" prefWidth="48.0">
+      <VBox alignment="CENTER" prefHeight="380.0" prefWidth="60.0">
          <children>
             <Label fx:id="info" alignment="CENTER" onMouseEntered="#displayInfo" prefHeight="26.0" prefWidth="33.0" style="-fx-background-color: rgba(128, 128, 128, 0.2); -fx-background-radius: 50%; -fx-padding: 5;" text="i" textAlignment="CENTER" underline="true">
                <font>

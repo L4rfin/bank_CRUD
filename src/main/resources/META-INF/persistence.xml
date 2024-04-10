@@ -6,15 +6,15 @@
         <description>
             Persistence unit for the Jakarta Persistence tutorial of the Hibernate Getting Started Guide
         </description>
-        <class>org.example.entity.UserEntity</class>
+        <class>org.example.entity.UsersEntity</class>
         <class>org.example.entity.AccountEntity</class>
         <class>org.example.entity.AccountlistEntity</class>
-        <class>org.example.entity.TransactionEntity</class>
+        <class>org.example.entity.TransactionsEntity</class>
         <class>org.example.entity.TransactionlistEntity</class>
         <!-- Konfiguracja połączenia z bazą danych -->
         <properties>
             <property name="hibernate.connection.driver_class" value="org.mariadb.jdbc.Driver"/>
-            <property name="hibernate.connection.url" value="jdbc:mariadb://localhost:3306/bank_gui"/>
+            <property name="hibernate.connection.url" value="jdbc:mariadb://localhost:3306/bank"/>
             <property name="hibernate.connection.username" value="bank_admin"/>
             <property name="hibernate.connection.password" value="zaq1@WSX"/>
 

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="MainPanel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerCreateAccountView">
+   <children>
+      <VBox alignment="BOTTOM_LEFT" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#buttonReturnToHomepage" text="Return" />
+         </children>
+      </VBox>
+      <VBox prefHeight="380.0" prefWidth="380.0">
+         <children>
+            <Separator orientation="VERTICAL" prefHeight="39.0" prefWidth="55.0" />
+            <Label text="Account name" />
+            <Separator prefHeight="8.0" prefWidth="579.0" />
+            <TextField fx:id="accountNameField" />
+            <Separator prefHeight="8.0" prefWidth="579.0" />
+            <ComboBox fx:id="accountTypeComboBox" prefWidth="150.0" promptText="Account type" />
+            <Separator prefHeight="8.0" prefWidth="579.0" />
+            <Label text="Account number" />
+            <Separator prefHeight="8.0" prefWidth="579.0" />
+            <TextField fx:id="accountNumberField" editable="false" prefHeight="26.0" prefWidth="700.0" />
+            <Separator prefHeight="8.0" prefWidth="579.0" />
+            <Button mnemonicParsing="false" onMouseClicked="#generateNewNumber" text="new number" />
+            <Separator prefHeight="8.0" prefWidth="579.0" />
+            <Label text="Start Balance" />
+            <Separator prefHeight="8.0" prefWidth="579.0" />
+            <TextField fx:id="accountBalanceField" />
+            <Separator prefHeight="8.0" prefWidth="579.0" />
+            <Separator orientation="VERTICAL" prefHeight="78.0" prefWidth="40.0" />
+         </children>
+      </VBox>
+      <VBox alignment="BOTTOM_RIGHT" prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#buttonCreatePress" text="Create" />
+         </children>
+      </VBox>
+   </children>
+</HBox>

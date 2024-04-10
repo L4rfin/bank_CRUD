@@ -1,0 +1,75 @@
+.label{
+    -fx-background-radius: 6px;
+    -fx-padding: 2px;
+    -fx-background-color: linear-gradient(to top, #025951, #038C3E);
+    -fx-border-color: #034159;
+    -fx-border-width: 3px;
+    -fx-border-radius: 6px;
+}
+
+#MainPanel,.Pane{
+    -fx-background-color: linear-gradient(to right bottom, #034159, #02735E);
+    -fx-padding: 10px;
+    -fx-pref-width: 485px;
+    -fx-pref-height: 490px;
+}
+#scrollPanel, #accountListPanel {
+    -fx-border-color: #034159;
+    -fx-border-width: 3px;
+    -fx-border-radius: 6px;
+    -fx-background-color: linear-gradient(to top, #025951, #038C3E);
+    -fx-background-radius: 6px;
+    -fx-padding: 2px;
+}
+#accountPanel{
+    -fx-background-color: linear-gradient(to right bottom, #034159, #02735E);
+    -fx-padding: 10px;
+    -fx-pref-width: 445px;
+    -fx-pref-height: 426px;
+}
+#accountNameLabel, #accountTypeLabel, #loginLabel, #passwordLabel, #nameLabel, #surnameLabel, #ac_number, #emailLabel, #userNameLabel, #rePasswordLabel {
+    -fx-border-color: #034159;
+    -fx-border-width: 3px;
+    -fx-border-radius: 6px;
+    -fx-background-color: linear-gradient(to top, #025951, #038C3E);
+    -fx-background-radius: 6px;
+    -fx-padding: 2px;
+}
+
+
+#accountNumber {
+    -fx-background-color: #038C3E;
+    -fx-border-color: #034159;
+    -fx-border-width: 3px;
+    -fx-border-radius: 6px;
+}
+
+.text-field, .combo-box {
+    -fx-background-color: linear-gradient(to top, #025951, #034159);
+    -fx-border-color: #034159;
+    -fx-border-width: 3px;
+    -fx-border-radius: 6px;
+}
+
+.button {
+    -fx-background-color: #038C3E;
+    -fx-border-color: #034159;
+    -fx-border-width: 3px;
+    -fx-border-radius: 6px;
+}
+
+.button:hover {
+    -fx-background-color: #0CF25D;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.3), 10, 0, 2, 2);
+    -fx-border-color: #034159;
+    -fx-border-width: 3px;
+    -fx-border-radius: 6px;
+}
+
+.separator {
+    visibility: false;
+}
+
+.scroll-bar, .scroll-pane, .track{
+    -fx-background-color: linear-gradient(to top, #025951, #038C3E);
+}

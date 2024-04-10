@@ -1,41 +1,63 @@
 package org.example.service;
 
 import jakarta.persistence.Query;
-import org.example.entity.UserEntity;
+import org.example.Result;
+import org.example.entity.UsersEntity;
+import org.example.service.manager.EntityManager;
+
 import java.util.concurrent.atomic.AtomicReference;
 
 public class LoginUser {
     public LoginUser(){
         EntityManager.setUp();
     }
-    public UserEntity LookForUserAndLoginUsingUsername(String userName, String password) {
-        MakeHashCode(userName);
-        MakeHashCode(password);
-        AtomicReference<UserEntity> user = new AtomicReference<>();
+    public Result<UsersEntity> LookForUserAndLoginUsingUsername(String userName, String password) {
+        System.out.println("user name");
+        String  userNamehc = MakeHashCode(userName);
+        String passwordhc = MakeHashCode(password);
+        AtomicReference<UsersEntity> user = new AtomicReference<>();
         try{EntityManager.inTransaction(entityManager -> {
-            Query query = entityManager.createQuery("SELECT u FROM UserEntity u WHERE u.login = :login AND u.pasword = :password");
-            query.setParameter("login", userName);
-            query.setParameter("password", password);
-            user.set((UserEntity) query.getSingleResult());
+            Query query = entityManager.createQuery("SELECT u FROM UsersEntity u WHERE u.login = :login AND u.passwords = :password");
+            query.setParameter("login", userNamehc);
+            query.setParameter("password", passwordhc);
+            user.set((UsersEntity) query.getSingleResult());
         });
         }catch (Exception e){
-            System.out.println("exception");
-            user.set(null);
+            System.out.println("no user found");
+            return Result.error(e.getMessage());
         }
-        return user.get();
+        return Result.success(user.get());
     }
-    public UserEntity LookForUserAndLoginUsingEmail(String email, String password) {
-        MakeHashCode(password);
-        AtomicReference<UserEntity> user = new AtomicReference<>();
+//    } public UsersEntity LookForUserAndLoginUsingUsername(String userName, String password) {
+//        System.out.println("user name");
+//        String  userNamehc = MakeHashCode(userName);
+//        String passwordhc = MakeHashCode(password);
+//        AtomicReference<UsersEntity> user = new AtomicReference<>();
+//        try{EntityManager.inTransaction(entityManager -> {
+//            Query query = entityManager.createQuery("SELECT u FROM UsersEntity u WHERE u.login = :login AND u.passwords = :password");
+//            query.setParameter("login", userNamehc);
+//            query.setParameter("password", passwordhc);
+//            user.set((UsersEntity) query.getSingleResult());
+//        });
+//        }catch (Exception e){
+//            System.out.println("no user found");
+//            user.set(new UsersEntity());
+//        }
+//        return user.get();
+//    }
+    public UsersEntity LookForUserAndLoginUsingEmail(String email, String password) {
+        System.out.println("email");
+        String passwordhc = MakeHashCode(password);
+        AtomicReference<UsersEntity> user = new AtomicReference<>();
         try{EntityManager.inTransaction(entityManager -> {
-            Query query = entityManager.createQuery("SELECT u FROM UserEntity u WHERE u.email = :email AND u.pasword = :password");
+            Query query = entityManager.createQuery("SELECT u FROM UsersEntity u WHERE u.email = :email AND u.passwords = :password");
             query.setParameter("email", email);
-            query.setParameter("password", password);
-            user.set((UserEntity) query.getSingleResult());
+            query.setParameter("password", passwordhc);
+            user.set((UsersEntity) query.getSingleResult());
         });
         }catch (Exception e){
-            System.out.println("exception");
-            user.set(null);
+            System.out.println("no user found");
+            user.set(new UsersEntity());
         }
         return user.get();
     }

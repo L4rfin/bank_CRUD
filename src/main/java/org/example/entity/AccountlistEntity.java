@@ -1,46 +1,43 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+
 import java.util.Objects;
 
 @Entity
-@Table(name = "accountlist")
+@Table(name = "accountlist", schema = "bank", catalog = "")
 public class AccountlistEntity {
-    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     @Column(name = "id")
-    int id;
-    @ManyToOne
-    @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
-    private UserEntity userByUserId;
+    private int id;
+
     @ManyToOne
     @JoinColumn(name = "accountId", referencedColumnName = "id", nullable = false)
     private AccountEntity accountByAccountId;
+    @ManyToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id", nullable = false)
+    private UsersEntity usersByUserId;
 
-    public AccountlistEntity(){
-        System.out.println("build AccountlistEntity");
+    public int getId() {
+        return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         AccountlistEntity that = (AccountlistEntity) o;
-        return id == that.id && Objects.equals(userByUserId, that.userByUserId) && Objects.equals(accountByAccountId, that.accountByAccountId);
+        return id == that.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, userByUserId, accountByAccountId);
-    }
-
-    public UserEntity getUserByUserId() {
-        return userByUserId;
-    }
-
-    public void setUserByUserId(UserEntity userByUserId) {
-        this.userByUserId = userByUserId;
+        return Objects.hash(id);
     }
 
     public AccountEntity getAccountByAccountId() {
@@ -49,5 +46,13 @@ public class AccountlistEntity {
 
     public void setAccountByAccountId(AccountEntity accountByAccountId) {
         this.accountByAccountId = accountByAccountId;
+    }
+
+    public UsersEntity getUsersByUserId() {
+        return usersByUserId;
+    }
+
+    public void setUsersByUserId(UsersEntity usersByUserId) {
+        this.usersByUserId = usersByUserId;
     }
 }
