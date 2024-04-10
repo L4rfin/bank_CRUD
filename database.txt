@@ -1,0 +1,62 @@
+// create user
+CREATE USER 'bank_admin'@'%' IDENTIFIED VIA mysql_native_password USING '***';GRANT ALL PRIVILEGES ON *.* TO 'bank_admin'@'%' REQUIRE NONE WITH GRANT OPTION MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0;
+
+//create databes
+DROP DATABASE IF EXISTS bank;
+CREATE DATABASE bank;
+USE bank;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    name VARCHAR(50) NOT NULL,
+    username VARCHAR(50) NOT NULL,
+    surname VARCHAR(50) NOT NULL,
+    login VARCHAR(50) NOT NULL UNIQUE,
+    passwords VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    accountList_id int
+);
+CREATE TABLE IF NOT EXISTS transactions(
+	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	transactionTitle VARCHAR(50) NOT NULL,
+    accountIds INT NOT NULL,
+    inAccountId INT NOT NULL,
+    outAccountId INT NOT NULL,
+    inSum DECIMAL(15,2) NOT NULL,
+    operationDate datetime NOT NULL,
+    outSum DECIMAL(15,2) NOT NULL,
+    provision DECIMAL(15,2) NOT NULL
+);
+CREATE TABLE IF NOT EXISTS accountlist(
+	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    accountId INT NOT NULL,
+    userId INT NOT NULL
+);
+CREATE TABLE IF NOT EXISTS account(
+	id INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    idUser INT NOT NULL,
+    accountName VARCHAR(50) NOT NULL,
+    accountNumber VARCHAR(50) NOT NULL,
+    accountType VARCHAR(50) NOT NULL,
+    balance DECIMAL(15,2) NOT NULL
+);
+
+ALTER TABLE transactions
+ADD CONSTRAINT fk_accountId_tlist
+FOREIGN KEY (inAccountId)
+REFERENCES account(id);
+
+ALTER TABLE transactions
+ADD CONSTRAINT fk_transactionId_tlist
+FOREIGN KEY (outAccountId)
+REFERENCES account(id);
+
+ALTER TABLE accountlist
+ADD CONSTRAINT fk_accountId_aclist
+FOREIGN KEY (accountId)
+REFERENCES account(id);
+
+ALTER TABLE accountlist
+ADD CONSTRAINT fk_userId_aclist
+FOREIGN KEY (userId)
+REFERENCES users(id);
