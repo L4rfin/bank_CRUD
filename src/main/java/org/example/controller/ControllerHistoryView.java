@@ -3,22 +3,28 @@ package org.example.controller;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Separator;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import org.example.entity.AccountEntity;
-import org.example.entity.TransactionEntity;
-import org.example.entity.UserEntity;
+import org.example.entity.TransactionsEntity;
+import org.example.entity.UsersEntity;
 import org.example.service.AccountHistory;
-import javafx.scene.input.MouseEvent;
+
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashSet;
 
 public class ControllerHistoryView {
     @FXML
@@ -30,13 +36,13 @@ public class ControllerHistoryView {
     @FXML
     ScrollPane scrollPanel;
     @FXML
-    VBox historyPanelList;
+    VBox accountListPanel;
     private Stage stage;
     private Scene scene;
     private Parent root;
-    private ArrayList<TransactionEntity> transactionList;
+    private ArrayList<TransactionsEntity> transactionList;
     private AccountEntity account;
-    private UserEntity user;
+    private UsersEntity user;
 
     public void onStart() {
         accountNameLabel.setText(account.getAccountName());
@@ -44,21 +50,32 @@ public class ControllerHistoryView {
         accountNumber.setText(String.valueOf(account.getAccountNumber()));
 
         AccountHistory accountHistory = new AccountHistory();
-        setTransactionList(accountHistory.getAccountHistory(account.getId()));
+        this.transactionList = accountHistory.getAccountHistory(account.getId());
+
         if (!transactionList.isEmpty()) {
+            HashSet<TransactionsEntity> set = new HashSet<>(transactionList);
+            transactionList.clear();
+            transactionList.addAll(set);
+        }
+        if (!transactionList.isEmpty()) {
+            Collections.sort(transactionList, Comparator.comparing(TransactionsEntity::getOperationDate));
             transactionList.forEach(this::CreateTransactionHistory);
         } else {
             System.out.println("transaction empty");
         }
     }
 
-    public void CreateTransactionHistory(TransactionEntity transaction) {
+    public void CreateTransactionHistory(TransactionsEntity transaction) {
 
         javafx.geometry.Insets margins = new Insets(10);
-
         Pane panel1 = new Pane();
+        panel1.setStyle("-fx-background-color: blue");
+        panel1.setMaxWidth(350);
         VBox mainColumn = new VBox();
-
+        Separator separator = new Separator(Orientation.HORIZONTAL);
+        Separator separator1 = new Separator(Orientation.HORIZONTAL);
+        separator1.setPrefHeight(20);
+        Label TransferTitle = new Label("transfer title: " + transaction.getTransactionTitle());
         Label accountIds = new Label("account id: " + transaction.getAccountIds());
         Label outAccountId = new Label("out account id: " + transaction.getOutAccountId());
         Label inAccountId = new Label("in account id: " + transaction.getInAccountId());
@@ -74,11 +91,13 @@ public class ControllerHistoryView {
         HBox fifthRow = new HBox();
 
         firstRow.getChildren().add(accountIds);
+        firstRow.getChildren().add(TransferTitle);
         secondRow.getChildren().add(outAccountId);
         secondRow.getChildren().add(inAccountId);
-        if (transaction.getInSum()>0){
+        if (transaction.getInSum() > 0) {
             thirdRow.getChildren().add(inSum);
-        }if (transaction.getOutSum()>0){
+        }
+        if (transaction.getOutSum() > 0) {
             thirdRow.getChildren().add(outSum);
         }
         fourthRow.getChildren().add(provision);
@@ -94,11 +113,14 @@ public class ControllerHistoryView {
         mainColumn.getChildren().add(thirdRow);
         mainColumn.getChildren().add(fourthRow);
         mainColumn.getChildren().add(fifthRow);
+        mainColumn.getChildren().add(separator);
         panel1.getChildren().add(mainColumn);
-        historyPanelList.getChildren().add(panel1);
-        historyPanelList.setPrefHeight(392+historyPanelList.getHeight()+500);
+        accountListPanel.getChildren().add(panel1);
+        accountListPanel.getChildren().add(separator1);
+        accountListPanel.setPrefHeight(392 + accountListPanel.getHeight() + 500);
     }
-    public void buttonReturnToHomepage(MouseEvent event)throws IOException{
+
+    public void buttonReturnToHomepage(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/homepage-view.fxml"));
         root = loader.load();
         ControllerHomepageView homepageViewController = loader.getController();
@@ -110,11 +132,11 @@ public class ControllerHistoryView {
         stage.show();
     }
 
-    public ArrayList<TransactionEntity> getTransactionList() {
+    public ArrayList<TransactionsEntity> getTransactionList() {
         return transactionList;
     }
 
-    public void setTransactionList(ArrayList<TransactionEntity> transactionList) {
+    public void setTransactionList(ArrayList<TransactionsEntity> transactionList) {
         this.transactionList = transactionList;
     }
 
@@ -126,7 +148,7 @@ public class ControllerHistoryView {
         this.account = account;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(UsersEntity user) {
         this.user = user;
     }
 }

@@ -1,39 +1,41 @@
 package org.example.entity;
 
 import jakarta.persistence.*;
+
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
-@Table(name = "user")
-public class UserEntity {
+@Table(name = "users", schema = "bank", catalog = "")
+public class UsersEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
     private int id;
     @Basic
     @Column(name = "name")
-    private String name;
+    private String  name;
     @Basic
     @Column(name = "surname")
     private String surname;
     @Basic
+    @Column(name = "username")
+    private String username;
+    @Basic
     @Column(name = "login")
     private String login;
+    @Basic
+    @Column(name = "passwords")
+    private String passwords;
     @Basic
     @Column(name = "email")
     private String email;
     @Basic
-    @Column(name = "pasword")
-    private String pasword;
-    @Basic
-    @Column(name = "acountList_id")
-    private int acountListId;
-    @OneToMany(mappedBy = "userByUserId")
+    @Column(name = "accountList_id")
+    private int accountListId;
+    @OneToMany(mappedBy = "usersByUserId")
     private Collection<AccountlistEntity> accountlistsById;
-    public UserEntity(){
-        System.out.println("build UserEntity");
-    }
+
     public int getId() {
         return id;
     }
@@ -46,7 +48,7 @@ public class UserEntity {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String  name) {
         this.name = name;
     }
 
@@ -58,6 +60,14 @@ public class UserEntity {
         this.surname = surname;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
     public String getLogin() {
         return login;
     }
@@ -66,33 +76,41 @@ public class UserEntity {
         this.login = login;
     }
 
-    public String getPasword() {
-        return pasword;
+    public String getPasswords() {
+        return passwords;
     }
 
-    public void setPasword(String pasword) {
-        this.pasword = pasword;
+    public void setPasswords(String passwords) {
+        this.passwords = passwords;
     }
 
-    public int getAcountListId() {
-        return acountListId;
+    public String getEmail() {
+        return email;
     }
 
-    public void setAcountListId(int acountListId) {
-        this.acountListId = acountListId;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getAccountListId() {
+        return accountListId;
+    }
+
+    public void setAccountListId(int accountListId) {
+        this.accountListId = accountListId;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        UserEntity that = (UserEntity) o;
-        return id == that.id && acountListId == that.acountListId && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(login, that.login) && Objects.equals(pasword, that.pasword);
+        UsersEntity that = (UsersEntity) o;
+        return id == that.id && accountListId == that.accountListId && Objects.equals(name, that.name) && Objects.equals(surname, that.surname) && Objects.equals(username, that.username) && Objects.equals(login, that.login) && Objects.equals(passwords, that.passwords) && Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, login, pasword, acountListId);
+        return Objects.hash(id, name, surname, username, login, passwords, email, accountListId);
     }
 
     public Collection<AccountlistEntity> getAccountlistsById() {
@@ -105,22 +123,11 @@ public class UserEntity {
 
     @Override
     public String toString() {
-        return "UserEntity{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+        return "UsersEntity{" +
+                "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", login='" + login + '\'' +
-                ", pasword='" + pasword + '\'' +
-                ", acountListId=" + acountListId +
-                ", email='"+email+'\''+
+                ", username='" + username + '\'' +
+                "email"+email+
                 '}';
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getEmail() {
-        return email;
     }
 }

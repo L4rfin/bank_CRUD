@@ -1,17 +1,18 @@
 package org.example.service;
 
-import org.example.entity.UserEntity;
+import org.example.entity.UsersEntity;
+import org.example.service.manager.EntityManager;
 
 public class CreateUser {
     public CreateUser() {
         EntityManager.setUp();
     }
 
-    public boolean AddUser(UserEntity newUser) {
+    public boolean AddUser(UsersEntity newUser) {
         LoginUser loginUser = new LoginUser();
-        if (loginUser.LookForUserAndLoginUsingUsername(newUser.getLogin(), newUser.getPasword()) == null) {
+        if (!loginUser.LookForUserAndLoginUsingUsername(newUser.getLogin(), newUser.getPasswords()).isSuccess()) {
             newUser.setLogin(MakeHashCode(newUser.getLogin()));
-            newUser.setPasword(MakeHashCode(newUser.getPasword()));
+            newUser.setPasswords(MakeHashCode(newUser.getPasswords()));
             System.out.println("creating from addUSer");
             EntityManager.inTransaction(entityManager -> {
                 entityManager.persist(newUser);

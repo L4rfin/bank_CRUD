@@ -5,14 +5,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import org.apache.commons.validator.routines.EmailValidator;
-import org.example.entity.UserEntity;
+import org.example.entity.UsersEntity;
 import org.example.service.LoginUser;
-
+import org.example.Result;
 import java.io.IOException;
 import java.util.Objects;
 
@@ -55,7 +59,7 @@ public class ControllerLoginView {
                 System.out.println("login as email");
                 updateLoginInputAsEmail(loginField.getText());
             }
-            if(!emailValidator(loginField.getText())) {
+            if (!emailValidator(loginField.getText())) {
                 System.out.println("login as username");
                 updateLoginInputAsUsername(loginField.getText());
             }
@@ -81,8 +85,8 @@ public class ControllerLoginView {
     }
 
     public void updateLoginInputAsEmail(String email) {
-            setEmail(email);
-            setLogin(null);
+        setEmail(email);
+        setLogin(null);
         loginLabel.setText("User name or email");
         loginLabel.setStyle("-fx-text-fill: green");
         loginLabel.setStyle("-fx-font-weight: bold");
@@ -102,13 +106,12 @@ public class ControllerLoginView {
         }
     }
 
-    public void loginUsingEmail(MouseEvent event)throws IOException {
+    public void loginUsingEmail(MouseEvent event) throws IOException {
         if (email != null && password != null) {
             LoginUser tryToLogin = new LoginUser();
-            UserEntity user = tryToLogin.LookForUserAndLoginUsingEmail(email, password);
-            System.out.printf(user.toString());
+            UsersEntity user = tryToLogin.LookForUserAndLoginUsingEmail(email, password);
+
             if ((user.getId() > 0)) {
-                System.out.printf(user.toString());
                 GoToHomepage(event, user);
 
             } else {
@@ -124,11 +127,12 @@ public class ControllerLoginView {
     public void loginUsingUsername(MouseEvent event) throws IOException {
 
         LoginUser tryToLogin = new LoginUser();
-        UserEntity user = tryToLogin.LookForUserAndLoginUsingUsername(login, password);
-        System.out.printf(user.toString());
-        if ((user.getId() > 0)) {
-            System.out.printf(user.toString());
-            GoToHomepage(event, user);
+        Result<UsersEntity> user = tryToLogin.LookForUserAndLoginUsingUsername(login, password);
+        if (user.isSuccess())
+        {
+                GoToHomepage(event, user.getValue());
+        }else {
+            System.out.println(user.getError());
         }
 
     }
@@ -144,7 +148,7 @@ public class ControllerLoginView {
 
     public boolean emailValidator(String email) {
         System.out.println("email: " + email);
-        System.out.println( EmailValidator.getInstance().isValid(email));
+        System.out.println(EmailValidator.getInstance().isValid(email));
         return EmailValidator.getInstance().isValid(email);
     }
 
@@ -172,10 +176,9 @@ public class ControllerLoginView {
         if (login != null && password != null) {
             loginUsingUsername(event);
         }
-        if (email != null && password !=null){
+        if (email != null && password != null) {
             loginUsingEmail(event);
-        }
-        else {
+        } else {
             passwordLabel.setText("Password or user name is incorrect");
             passwordLabel.setStyle("-fx-text-fill: Red");
 
@@ -183,7 +186,7 @@ public class ControllerLoginView {
             loginLabel.setStyle("-fx-text-fill: Red");
         }
     }
-    
+
 
     public void MakeCABold() {
         createAccountLabel.setStyle(
@@ -199,7 +202,7 @@ public class ControllerLoginView {
 
     @FXML
     public void GoToCreateAccount(MouseEvent event) throws IOException {
-        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/create-account-view.fxml")));
+        root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/create-user-view.fxml")));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
@@ -207,7 +210,7 @@ public class ControllerLoginView {
     }
 
     @FXML
-    public void GoToHomepage(MouseEvent event, UserEntity user) throws IOException {
+    public void GoToHomepage(MouseEvent event, UsersEntity user) throws IOException {
         System.out.println("try to go homepage");
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/homepage-view.fxml"));
         root = loader.load();
@@ -220,25 +223,12 @@ public class ControllerLoginView {
         stage.show();
     }
 
-
-    public String getLogin() {
-        return login;
-    }
-
     public void setLogin(String login) {
         this.login = login;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public void setEmail(String email) {
