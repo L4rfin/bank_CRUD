@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox fx:id="MainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
+      prefHeight="400.0" prefWidth="600.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.14-internal"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerTransferView">
+   <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Label text="Transaction name"/>
+         <Separator prefHeight="18.0" prefWidth="28.0"/>
+         <TextField fx:id="transactionNameField" accessibleRole="TREE_VIEW" onKeyReleased="#updateTransferName"/>
+         <VBox prefHeight="100.0" prefWidth="98.0">
+            <children>
+               <Label text="account name"/>
+               <Separator prefWidth="200.0"/>
+               <Label text="account number"/>
+               <Separator prefWidth="200.0"/>
+               <Label text="account balance"/>
+            </children>
+         </VBox>
+         <VBox layoutX="282.0" layoutY="10.0" prefHeight="100.0" prefWidth="195.0">
+            <children>
+               <Label fx:id="accountName" text="value"/>
+               <Separator prefWidth="200.0"/>
+               <Label fx:id="accountNumber" text="value"/>
+               <Separator prefWidth="200.0"/>
+               <Label fx:id="accountBalance" text="value"/>
+            </children>
+         </VBox>
+      </children>
+   </HBox>
+   <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Label text="account number:"/>
+         <Separator prefHeight="18.0" prefWidth="28.0"/>
+         <TextField fx:id="transactionNumberField" onKeyReleased="#updateACNumber"/>
+      </children>
+   </HBox>
+   <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Label text="amount"/>
+         <Separator prefHeight="18.0" prefWidth="28.0"/>
+         <TextField fx:id="amountField" onKeyReleased="#updateACTransfer"/>
+      </children>
+   </HBox>
+   <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Button mnemonicParsing="false" onMouseClicked="#tryToProcessTransaction" text="confirm"/>
+         <Separator prefWidth="200.0"/>
+         <Label text="provision"/>
+      </children>
+   </HBox>
+   <Button mnemonicParsing="false" onMouseClicked="#buttonReturnToHomepage" text="return"/>
+</VBox>

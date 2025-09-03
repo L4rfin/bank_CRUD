@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="MainPanel" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerAccountOption">
+   <children>
+      <VBox alignment="BOTTOM_LEFT" prefWidth="100.0">
+         <children>
+            <Button mnemonicParsing="false" onMouseClicked="#returnHome" text="Return" />
+         </children></VBox>
+      <VBox prefWidth="400.0">
+         <children>
+            <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Account name" />
+                        <Label text="Account type" />
+                        <Label text="Account number" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label fx:id="accountName" text="Label" />
+                        <Label fx:id="accountType" text="Label" />
+                        <Label fx:id="accountNumber" text="Label" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Name" />
+                        <Label text="Surname" />
+                        <Label text="user name" />
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label fx:id="loadedUserName1" text="Label" />
+                        <Label fx:id="loadedUserSurname1" text="Label" />
+                        <Label fx:id="loadedUserUserName1" text="Label" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <ScrollPane prefHeight="146.0" prefWidth="400.0">
+               <content>
+                  <HBox prefHeight="131.0" prefWidth="399.0" />
+               </content>
+            </ScrollPane>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Label text="Login" />
+                        <Separator prefWidth="200.0" />
+                        <Label text="Password" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <TextField fx:id="newUserLogin" />
+                        <Separator prefWidth="200.0" />
+                        <TextField fx:id="newUserPassword" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#searchButtonPress" text="Search" />
+                     </children></VBox>
+                  <VBox fx:id="newUserCardSpot" prefHeight="200.0" prefWidth="0.0" />
+                  <Button mnemonicParsing="false" onMouseClicked="#addNewUserToAccount" text="Add" />
+               </children>
+            </HBox>
+         </children></VBox>
+      <VBox prefWidth="100.0" />
+   </children>
+</HBox>

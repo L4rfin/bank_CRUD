@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="MainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerHistoryView">
+   <children>
+      <VBox alignment="BOTTOM_LEFT" prefHeight="470.0" prefWidth="143.0">
+         <children>
+            <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button fx:id="goBackButton" mnemonicParsing="false" onMouseClicked="#buttonReturnToHomepage" text="return" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="380.0" prefWidth="464.0">
+         <children>
+            <HBox alignment="BOTTOM_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <VBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="114.0">
+                     <children>
+                        <Label text="Account name" />
+                        <Separator prefWidth="200.0" />
+                        <Label text="Account type" />
+                        <Separator prefWidth="200.0" />
+                        <Label text="Account number" />
+                        <Separator prefWidth="200.0" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="111.0">
+                     <children>
+                        <Label fx:id="accountNameLabel" text="ac_name" />
+                        <Separator prefWidth="200.0" />
+                        <Label fx:id="accountTypeLabel" text="ac_type" />
+                        <Separator prefWidth="200.0" />
+                        <Label fx:id="accountNumber" text="ac_number" />
+                        <Separator prefWidth="200.0" />
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <ScrollPane fx:id="scrollPanel" prefHeight="235.0" prefWidth="352.0">
+               <content>
+                  <VBox fx:id="accountListPanel" prefHeight="204.0" prefWidth="350.0" />
+               </content>
+            </ScrollPane>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="143.0" />
+   </children>
+</HBox>

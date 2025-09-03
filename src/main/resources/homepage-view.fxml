@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox fx:id="MainPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="409.0" prefWidth="394.0" stylesheets="@default.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.controller.ControllerHomepageView">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" />
+      <VBox prefHeight="389.0" prefWidth="320.0">
+         <children>
+            <HBox prefHeight="94.0" prefWidth="600.0">
+               <children>
+                  <Label prefHeight="22.0" prefWidth="104.0" text="Bank" />
+                  <VBox prefHeight="94.0" prefWidth="126.0">
+                     <children>
+                        <ImageView fitHeight="51.0" fitWidth="76.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </VBox>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <VBox prefHeight="66.0" prefWidth="58.0">
+                           <children>
+                              <Label layoutX="10.0" layoutY="28.0" text="client id:" />
+                              <Label text="name:" />
+                              <Label layoutX="10.0" layoutY="10.0" text="surname:" />
+                           </children>
+                        </VBox>
+                        <VBox layoutX="90.0" prefHeight="66.0" prefWidth="81.0">
+                           <Label fx:id="clientId" text="Label" />
+                           <Label fx:id="clientName" text="Label" />
+                           <Label fx:id="clientSurname" text="Label" />
+                        </VBox>
+                     </children>
+                  </Pane>
+               </children>
+            </HBox>
+            <Label text="Acount list" />
+            <ScrollPane fx:id="scrollPanel" prefHeight="235.0" prefWidth="394.0">
+               <content>
+                  <HBox fx:id="accountListPanel" prefHeight="195.0" prefWidth="280.0" />
+               </content>
+            </ScrollPane>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="14.0" layoutY="49.0" mnemonicParsing="false" onMouseClicked="#buttonLogout" text="Logout" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox prefHeight="200.0" prefWidth="100.0" />
+   </children>
+</HBox>
