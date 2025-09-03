@@ -1,3 +1,4 @@
 # bank_CRUD
 hibernate nad javaFX 
-the application code is on another branch
+
+# the application code is on another branch
